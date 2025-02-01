@@ -1,0 +1,46 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #4f4f4f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.home_wrapper {
+  text-align: center;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.header_wrapper h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.level_container {
+  margin-top: 20px;
+}
+
+.level_container select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.level_container select:focus {
+  outline: none;
+}
+
+.game_container {
+  margin-top: 20px;
+}

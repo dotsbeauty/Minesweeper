@@ -1,0 +1,36 @@
+/* Game.css */
+.game_wrapper {
+    text-align: center;
+  }
+
+  .game_container {
+    margin-top: 20px;
+  }
+
+  .game_status {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .game_status.won {
+    color: #4caf50;
+  }
+
+  .game_status.lost {
+    color: #f44336;
+  }
+
+  .game_status button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .game_status button:hover {
+    background-color: #444;
+  }
