@@ -1,7 +1,6 @@
 import './Game.css';
 import { useState } from 'react';
 import Board from './Board.js';
-// import { useNavigate } from "react-router-dom";
 
 function checkWinCondition(grid, mines) {
   let revealedCount = 0;
@@ -18,13 +17,7 @@ function checkWinCondition(grid, mines) {
   return revealedCount + mines === totalCells || correctFlags === mines;
 }
 
-
-function Game({ selectedLevel }) {
-  // const navigate = useNavigate();
-
-  // const handleNavigate = () => {
-  //   navigate("/");
-  // };
+function Game({ selectedLevel, onGoBack }) {
   const rows = selectedLevel === "beginner" ? 9 : selectedLevel === "intermediate" ? 16 : 24;
   const mines = rows === 9 ? 10 : rows === 16 ? 40 : 99;
 
@@ -59,15 +52,21 @@ function Game({ selectedLevel }) {
       <div className="game_container">
         {gameStatus === 'won' && (
           <div className="game_status won">
-            🎉 You Won! <button onClick={resetGame}>Play Again</button>
+            <p>🎉 You Won! </p>
+            <button onClick={resetGame}>Play Again</button>
           </div>
         )}
         {gameStatus === 'lost' && (
           <div className="game_status lost">
-            💥 You Lost! <button onClick={resetGame}>Try Again</button>
+            <p>💥 You Lost!</p>
+            <button onClick={resetGame}>Try Again</button>
           </div>
         )}
       </div>
+
+      <button className="go_back_button" onClick={onGoBack}>
+        Go Back to Home
+      </button>
 
       {gameStatus === 'playing' && (<Board
         rows={rows}

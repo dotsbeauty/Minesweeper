@@ -1,6 +1,5 @@
 import './App.css';
 import { useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Game from './Game.js';
 
 function App() {
@@ -8,6 +7,10 @@ function App() {
 
   const handleLevelChange = (event) => {
     setSelectedLevel(event.target.value);
+  };
+
+  const handleGoBack = () => {
+    setSelectedLevel(null);
   };
 
   return (
@@ -28,7 +31,7 @@ function App() {
           </div>
         ) : (
           <div className="header_container game_container">
-            <Game selectedLevel={selectedLevel} />
+            <Game selectedLevel={selectedLevel} onGoBack={handleGoBack} />
           </div>
         )}
       </div>

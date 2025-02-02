@@ -1,44 +1,49 @@
 /* Cell.css */
 .cell_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .cell {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #666;
-    border: 1px solid #444;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: white;
-    transition: background-color 0.2s;
-  }
+.cell {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #666;
+  border: 1px solid #444;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: white;
+  transition: background-color 0.2s;
+}
 
-  .cell:hover {
-    background-color: #777;
-  }
+.cell:hover {
+  background-color: #777;
+}
 
-  .cell.revealed {
-    background-color: #444;
-    cursor: default;
-  }
+.cell.revealed {
+  background-color: #444;
+  cursor: default;
+}
 
-  .cell.flagged {
-    background-color: #ffeb3b;
-    color: #000;
-  }
+.cell.revealed.isBomb {
+  background-color: #f44336;
+}
 
-  .cell.revealed.flagged {
-    background-color: #f44336;
-  }
+.cell.flagged {
+  background-color: #ffeb3b;
+  color: #000;
+}
 
-  .cell:disabled {
-    cursor: default;
-    opacity: 1;
-  }
+.cell.revealed.flagged {
+  background-color: #f44336;
+}
+
+.cell:disabled {
+  border: 1px dotted #555;
+  cursor: default;
+  opacity: 1;
+}

@@ -108,10 +108,12 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
           if (cell.isBomb) cell.isRevealed = true;
         })
       );
-      setGrid(newGrid);
-      if (parentGrid) setParentGrid(newGrid); // Sync with parent
-      setGameStatus("lost");
-      return;
+      setTimeout(() => {
+        setGrid(newGrid);
+        if (parentGrid) setParentGrid(newGrid);
+        setGameStatus("lost");
+        return;
+      }, 1500);
     }
 
     const queue = [[row, col]];
@@ -143,7 +145,7 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
     }
 
     setGrid(newGrid);
-    if (parentGrid) setParentGrid(newGrid); // Sync with parent
+    if (parentGrid) setParentGrid(newGrid);
   }
 
   function handleRightClick(event, row, col) {
@@ -157,7 +159,7 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
     if (!newGrid[row][col].isRevealed) {
       newGrid[row][col].isFlagged = !newGrid[row][col].isFlagged;
       setGrid(newGrid);
-      if (parentGrid) setParentGrid(newGrid); // Sync with parent
+      if (parentGrid) setParentGrid(newGrid);
     }
   }
 
@@ -171,18 +173,15 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
   return (
     <div className="board_wrapper">
       <div className="board_data">
-        <h2>Level: {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)}</h2>
-        <p>Grid: {rows} x {rows}</p>
-        <p>Time: {timer}s</p>
-        <p>Flags: {mines - countFlags(grid)}</p>
+        <h2 className='level_data'>Level: {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)}</h2>
+        <p className='grid_data'>▦ Grid: {rows} x {rows}</p>
+        <p className='time_data'>⏱️ Time: {timer}s</p>
+        <p className='flag_data'>🚩 Flags: {mines - countFlags(grid)}</p>
       </div>
       <div
-        className="grid_wrapper"
+        className={`grid_wrapper ${selectedLevel==='advanced' ? 'adv_class' : ''}`}
         style={{
           gridTemplateColumns: `repeat(${rows}, minmax(auto,auto))`,
-
-
-          // gridTemplateRows: `repeat(${rows}, 1fr)`,
         }}
       >
         {grid.map((row, rowIndex) =>
