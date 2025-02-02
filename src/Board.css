@@ -1,18 +1,16 @@
 .board_wrapper {
   text-align: center;
   max-width: 100vw;
-  /* max-height: 75vh; */
-  /* outline: 2px solid yellow; */
   overflow-x: auto;
 }
 
 .board_data {
   background-color: #444;
   padding: 0 20px;
-  border-radius: 6px 6px 0 0;
+  border-radius: 5px 5px 0 0;
   display: grid;
   grid-template-areas: "level_data level_data level_data"
-  "grid_data time_data flag_data";
+    "grid_data time_data flag_data";
   grid-template-columns: 1fr 3fr;
 }
 
@@ -48,14 +46,16 @@
   margin: 0 auto;
   background-color: #444;
   padding: 5px;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 5px 5px;
   max-height: 70vh;
-  /* Limit height to 70% of viewport height */
   overflow-y: auto;
-  /* Add vertical scroll for overflow */
   max-width: 90vw;
-  /* Add vertical scroll for overflow */
-  /* outline: 2px solid red; */
+}
+
+.adv_class>div {
+  gap: 2px;
+  width: 1.3em;
+  height: 1.3em;
 }
 
 @media (max-width: 600px) {
@@ -63,10 +63,4 @@
     max-height: 60vh;
     max-width: 95vw;
   }
-}
-
-.adv_class > div{
-  gap: 2px;
-  width: 1.3em;
-  height: 1.3em;
 }
