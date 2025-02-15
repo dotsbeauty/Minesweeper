@@ -22,6 +22,18 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
       );
   }
 
+  function checkWinCondition(grid) {
+    for (let row = 0; row < grid.length; row++) {
+      for (let col = 0; col < grid.length; col++) {
+        const cell = grid[row][col];
+        if (!cell.isBomb && !cell.isRevealed) {
+          return false; // If any non-bomb cell is not revealed, the game is not won
+        }
+      }
+    }
+    return true; // All non-bomb cells are revealed
+  }
+
   function calculateNearbyBombs(grid, row, col) {
     const directions = [
       [-1, -1], [-1, 0], [-1, 1],
@@ -146,6 +158,10 @@ function Board({ rows, selectedLevel, mines, grid: parentGrid, setGrid: setParen
 
     setGrid(newGrid);
     if (parentGrid) setParentGrid(newGrid);
+
+    if (checkWinCondition(newGrid)) {
+      setGameStatus("won");
+    }
   }
 
   function handleRightClick(event, row, col) {
